@@ -124,3 +124,6 @@ La segunda línea contiene la cantidad de tiempo que te tomará leer cada libro.
 ```bash
 1
 ```
+
+## Entrega
+Se debe comprimir el proyecto de IntelliJ IDEA en un archivo .zip y subirlo a la plataforma Google Classroom. El archivo .zip debe tener el nombre y apellido del estudiante, con el siguiente formato: `nombre_apellido.zip`.
