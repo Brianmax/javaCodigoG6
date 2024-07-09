@@ -1,129 +1,127 @@
 # Ejercicio 1
 
-Como objetivo de este año, te propones leer la mayor cantidad de libros posible. Hoy tienes `t` minutos para leer. Es por eso que tomas `n` libros de la biblioteca y para cada libro estimas el tiempo que te tomará leerlo. Sea el número de libros desde 1 hasta `n`. Necesitarás $a_{i}$ minutos para leer el i-ésimo libro.
+Crear una clase `Dog` con los siguientes atributos:
 
-Decides escoger un libro arbitrario con el número `i` y leer los libros posteriores uno a uno, empezando desde este libro `i` que acabas de escoger, y posteriormente `i + 1`, `i + 2` y así sucesivamente. Continúas este proceso hasta que el tiempo ya no te alcance. Eliges leer un libro hasta terminarlo, es decir, no lees un libro si no tienes el tiempo suficiente para terminarlo. ¿Cuál es la cantidad máxima de libros que puedes leer?
+- `breed` de tipo `String`
+- `age` de tipo `int`
+- `color` de tipo `String`
 
-**Input:**
-```bash
-4 5
-3 1 2 1
-```
-La primera línea contiene dos enteros que son la cantidad de libros y el tiempo libre (`n` y `t`).
+Crear un constructor que reciba los tres atributos y los asigne a los atributos de la clase.
 
-La segunda línea contiene la cantidad de tiempo que te tomará leer cada libro.
+Crear una clase `Main` con un método `main` que cree un objeto de tipo `Dog` e imprima sus atributos.
 
-**Output:**
-```bash
-3
-```
+## Ejercicio 2
 
-**Input:**
-```bash
-3 3
-2 2 3
-```
-**Output:**
-```bash
-1
-```
+Crear una clase `Computer` con los siguientes atributos:
 
-**Input:**
-```bash
-1 3
-5
-```
-**Output:**
-```bash
-0
-```
-**Input:**
-```bash
-1 10
-4
-```
+- `brand` de tipo `String`
+- `model` de tipo `String`
+- `ram` de tipo `int`
+- `storage` de tipo `int`
 
-**Output:**
-```bash
-1
-```
+Crear un constructor que reciba los cuatro atributos y los asigne a los atributos de la clase.
 
-**Input:**
-```bash
-2 10
-6 4
-```
+- Crear metodos para poder imprimir la informacion de la computadora.
+- Crear metodos para poder aumentar la memoria ram y el almacenamiento.
 
-**Output:**
-```bash
-2
-```
+## Ejercicio 3
 
-**Input:**
-```bash
-6 10
-2 3 4 2 1 1
-```
+Crear una clase `ComputerStore` con los siguientes atributos:
 
-**Output:**
-```bash
-4
-```
+- `computers` de tipo `ArrayList<Computer>`
+- `name` de tipo `String`
+- `address` de tipo `String`
+- `quantity` de tipo `int`
 
-**Input:**
-```bash
-7 13
-6 8 14 9 4 11 10
-```
+Crear un constructor que reciba los tres atributos y los asigne a los atributos de la clase.
 
-**Output:**
-```bash
-2
-```
+- Crear un metodo para agregar computadoras a la tienda.
+- Crear un metodo para imprimir la informacion de la tienda.
+- Crear un metodo para poder vender una computadora.
+- Crear un metodo para poder imprimir la cantidad de computadoras en la tienda.
+- Crear un metodo para poder filtrar las computadoras con mas de cierta cantidad de memoria ram.
 
-**Input:**
-```bash
-10 15
-10 9 1 1 5 10 5 3 7 2
-```
+## Ejericicio 4
 
-**Output:**
-```bash
-3
-```
+## Descripción
 
-**Input:**
-```bash
-20 30
-8 1 2 6 9 4 1 9 9 10 4 7 8 9 5 7 1 8 7 4
-```
+Desarrollar un sistema de gestión para la renta de películas, utilizando principios de programación orientada a objetos como la herencia y el polimorfismo.
 
-**Output:**
-```bash
-6
-```
+## Clases
 
-**Input:**
-```bash
-30 60
-16 13 22 38 13 35 17 17 20 38 12 19 9 22 20 3 35 34 34 21 35 40 22 3 27 19 12 4 8 19
-```
+### `RentalItem`
+- **Descripción**: Clase base para ítems en el sistema de renta.
+- **Atributos privados**:
+  - `itemName`: Nombre del ítem.
+  - `itemID`: ID único del ítem.
+  - `available`: Atributo que indica si el ítem está disponible para renta.
+- **Métodos**:
+  - Getters y setters para los atributos.
+  - `showDetails()`: Método para mostrar los detalles del ítem.
 
-**Output:**
-```bash
-4
-```
+### `Movie` (hereda de `RentalItem`)
+- **Descripción**: Representa una película disponible para renta.
+- **Atributos privados adicionales**:
+  - `director`: Director de la película.
+  - `duration`: Duración de la película.
+  - `ageRating`: Clasificación por edades.
+  - `genre`: Género de la película.
+- **Métodos**:
+  - Constructores, getters y setters para los nuevos atributos.
+  - Sobrescritura del método `showDetails()` para incluir detalles adicionales de la película.
 
-**Input:**
-```bash
-50 2
-124 214 63 73 996 760 38 571 451 300 970 1 706 937 837 494 619 88 851 411 957 990 842 613 821 649 627 34 693 678 734 116 816 985 705 940 499 493 922 967 854 439 112 644 961 438 189 572 655 550
-```
+### `Customer`
+- **Descripción**: Representa a un cliente del sistema de renta.
+- **Atributos privados**:
+  - `customerName`: Nombre del cliente.
+  - `customerID`: ID del cliente.
+  - `rentedMovies`: Lista de películas rentadas por el cliente.
+- **Métodos**:
+  - Getters y setters para los atributos.
+  - `showCustomerDetails()`: Método para mostrar los detalles del cliente.
 
-**Output:**
-```bash
-1
-```
+### `MovieRentalSystem`
+- **Descripción**: Representa el sistema de renta de películas y maneja todos los ítems de renta.
+- **Atributos**:
+  - `rentalItems`: Colección de `RentalItems`.
+  - `customers`: Lista de clientes registrados.
+- **Métodos**:
+  - `addItem()`: Añadir nuevos ítems al sistema.
+  - `registerCustomer()`: Registrar un nuevo cliente.
+  - `rentMovieToCustomer()`: Rentar una película a un cliente.
+  - `returnMovie()`: Procesar la devolución de una película rentada.
+  - `showAllItems()`: Mostrar todos los ítems disponibles para renta.
+  - `showAllCustomers()`: Mostrar todos los clientes registrados.
 
-## Entrega
-Se debe comprimir el proyecto de IntelliJ IDEA en un archivo .zip y subirlo a la plataforma Google Classroom. El archivo .zip debe tener el nombre y apellido del estudiante, con el siguiente formato: `nombre_apellido.zip`.
+
+## Ejercicio 5
+
+Crear una clase `BankAccount` con los siguientes atributos:
+
+- `accountNumber` de tipo `String`
+- `balance` de tipo `double`
+- `customer` de tipo `String`
+
+Crear un constructor que reciba los tres atributos y los asigne a los atributos de la clase.
+
+- Crear metodos para poder imprimir la informacion de la cuenta.
+
+Crear una clase `Bank` con los siguientes atributos:
+
+- `accounts` de tipo `ArrayList<BankAccount>`
+
+Crear un constructor que reciba el atributo y lo asigne a los atributos de la clase.
+
+- Crear un metodo para agregar cuentas al banco.
+
+- Crear un metodo para imprimir la informacion de las cuentas.
+
+- Crear un metodo para poder realizar un deposito a una cuenta.
+
+- Crear un metodo para poder realizar un retiro a una cuenta.
+
+- Crear un metodo para poder realizar una transferencia entre cuentas.
+
+- Crear un metodo para poder imprimir la cantidad de cuentas en el banco.
+
+- Crear un metodo para poder imprimir la cantidad total de dinero en el banco.
