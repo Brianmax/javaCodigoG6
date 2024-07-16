@@ -147,7 +147,7 @@ La primera linea contiene dos enteros `n` y `m` que representan el numero de dia
 0 0 1 0 1 1 1 1 0 
 ```
 
-## Ejericicio 6
+## Pregunta 8
 
 ## Descripción
 
