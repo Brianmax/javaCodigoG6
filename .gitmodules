@@ -1,3 +1,6 @@
 [submodule "sem2/miercoles"]
 	path = sem2/miercoles
 	url = git@github.com:Brianmax/sem2MiercolesG6.git
+[submodule "pooJava"]
+	path = pooJava
+	url = git@github.com:Brianmax/sem2MiercolesG6.git
