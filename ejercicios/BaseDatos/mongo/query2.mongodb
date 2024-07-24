@@ -1,0 +1,27 @@
+// operadores de comparacion
+
+// gt (greater than), lt (less than), gte, lte
+
+
+use('db1')
+db.universidades.find(
+    // filtro
+    {
+        alumnos: {
+            $gte: 7000
+        }
+    }
+)
+
+use('db1')
+db.universidades.find(
+    // filtro
+    {
+        presupuesto: {
+            $gte: 3000000,
+            $lte: 5000000
+        }
+    }
+)
+// git, docker, excepciones
+// $and, $or

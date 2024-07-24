@@ -1,0 +1,136 @@
+
+use('db1')
+db.createCollection("usuarios")
+
+
+use('db1')
+db.usuarios.insertOne(
+    {
+        "nombre": "George",
+        "apellido": "Maxi",
+        "username": "gmaxi21",
+        "password": "1234"
+    }
+)
+
+use('db1')
+db.usuarios.insertOne(
+    {
+        "nombre": "Miguel",
+        "apellido": "Martinez",
+        "username": "mmartinez21",
+        "password": "1234",
+        "edad": 43
+    }
+)
+
+use("db1")
+db.usuarios.find();
+
+use('db1')
+db.usuarios.insertMany(
+    [
+        {
+            "_id": 1,
+            "nombre": "Erick",
+            "apellido": "Gomez",
+            "username": "egomez21",
+            "password": "1234",
+            "edad": 38
+        },
+        {
+            "_id": 2,
+            "nombre": "Alex",
+            "apellido": "Cuadros",
+            "username": "acuadros21",
+            "password": "1234",
+            "edad": 43
+        }
+    ]
+)
+
+use('db1')
+db.universidades.insertOne(
+    {
+        nombre: "UNI",
+        carreras: ["Ing Mecanica", "Ing Mecatronica", "Ing Sanitaria", "Ing Electrica"],
+        alumnos: 4000,
+        direccion: {
+            calle: "Av Leon Velarde",
+            numero: 203,
+            distrito: "San Miguel",
+            region: "Lima"
+        },
+        presupuesto: 2000000 
+    }
+);
+
+
+use('db1')
+db.universidades.insertMany(
+    [
+        {
+            nombre: "PUCP",
+            carreras: ["Ing Mecanica", "Ing Mecatronica", "Derecho", "Psicologia"],
+            alumnos: 10000,
+            direccion: {
+                calle: "Av Universitaria",
+                numero: 499,
+                distrito: "San Isidro",
+                region: "Lima"
+            },
+            presupuesto: 5000000 
+        },
+        {
+            nombre: "UPCH",
+            carreras: ["Medicina", "Enfermeria", "Ing Biomedica", "Farmacia"],
+            alumnos: 5000,
+            direccion: {
+                calle: "Av Lima",
+                numero: 243,
+                distrito: "Surco",
+                region: "Lima"
+            },
+            presupuesto: 4000000 
+        },
+        {
+            nombre: "UNMSM",
+            carreras: ["Ing Mecanica", "Ing Mecatronica", "Sociologia", "Derecho", "Psicologia"],
+            alumnos: 15000,
+            direccion: {
+                calle: "Av Peru",
+                numero: 238,
+                distrito: "Miraflores",
+                region: "Lima"
+            },
+            presupuesto: 4000000 
+        },
+        {
+            nombre: "UNSA",
+            carreras: ["Ing Mecanica", "Ing Mecatronica", "Ing Quimica", "Derecho", "Trabajo Social"],
+            alumnos: 4000,
+            direccion: {
+                calle: "Av Venezuela",
+                numero: 201,
+                distrito: "Cercado",
+                region: "Arequipa"
+            },
+            presupuesto: 2000000
+        }
+    ]
+)
+
+use('db1')
+db.universidades.find(
+    // filtro
+    {
+        "direccion.region": "Lima"
+    },
+
+    // project (campos que quiero traer)
+    {
+        nombre: true,
+        alumnos: true,
+        _id: false
+    }
+);
