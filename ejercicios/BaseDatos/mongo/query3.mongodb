@@ -1,0 +1,114 @@
+use('db1')
+db.universidades.find();
+
+// $all
+
+use('db1')
+db.universidades.find(
+    {
+        carreras: {
+            $all: ["Ing Mecanica",
+                    "Ing Electrica"]
+        }
+    }
+);
+
+// $in
+
+use('db1')
+db.universidades.find(
+    {
+        carreras: {
+            $in: ["Ing Mecanica",
+                "Ing Electrica"]
+        }
+    }
+);
+
+// operador $size
+use('db1')
+db.universidades.find(
+    {
+        carreras: {
+            $in: ["Ing Mecanica",
+                "Ing Electrica"]
+        },
+        $where: "this.carreras.length>=5"
+    }
+);
+
+// $push
+
+use('db1')
+db.universidades.updateMany(
+    {
+        alumnos: {
+            $gte: 7000
+        }
+    },
+    {
+        $push: {
+            carreras: "Administracion"
+        }
+    }
+)
+// $addToSet
+
+use('db1')
+db.universidades.updateMany(
+    {
+        alumnos: {
+            $gte: 7000
+        }
+    },
+    {
+        $addToSet: {
+            carreras: "Administracion"
+        }
+    }
+)
+
+// operador $push con $each
+use('db1')
+db.universidades.updateMany(
+    {
+        alumnos: {
+            $gte: 7000
+        }
+    },
+    {
+        $addToSet: {
+            carreras: {
+                $each: ["Ing Mecatronica", "Ciencia de Datos"]
+            }
+        }
+    }
+)
+
+// pop: elimina el ultimo elemento o el primero
+// -1 para eliminar el primer elemento
+// 1 para eliminar el segundo elemento
+
+use('db1')
+db.universidades.updateMany(
+    {
+        alumnos: {
+            $gte: 7000
+        }
+    },
+    {
+        $pop: {
+            carreras: 1
+        }
+    }
+)
+use('db1')
+db.universidades.find(
+    {
+        alumnos: {
+            $gte: 7000
+        }
+    },
+)
+
+// pull
