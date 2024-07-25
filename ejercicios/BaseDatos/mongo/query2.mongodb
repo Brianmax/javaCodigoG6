@@ -18,10 +18,123 @@ db.universidades.find(
     // filtro
     {
         presupuesto: {
+            // and implicito
             $gte: 3000000,
             $lte: 5000000
         }
     }
 )
-// git, docker, excepciones
-// $and, $or
+// $or
+use('db1')
+db.universidades.find(
+    {
+        $or : [
+            {
+                alumnos: { $gte: 10000}
+            },
+            {
+                presupuesto: { $gte: 4000000 }
+            }
+        ]
+    }
+)
+
+// $and
+use('db1')
+db.universidades.find(
+    {
+        $and: [
+            {
+                alumnos: { $gte: 10000}
+            },
+            {
+                presupuesto: { $gte: 4000000}
+            }
+        ]
+    }
+)
+
+// and y or
+
+// traer documentos donde el numero de alumnos sea menor que 10k
+// o el presupuesto supere o sea igual los 4M, pero ademas, la universidad debe
+// de estar en la region lima
+
+
+use('db1')
+db.universidades.find(
+    {
+        $and: [
+            {
+                $or: [
+                    { alumnos: { $lt: 10000} },
+                    { presupuesto: { $gte: 400000}}
+                ]
+            },
+            {
+                "direccion.region": "Lima"
+            }
+        ]
+    }
+)
+
+// operador set
+
+use('db1')
+db.universidades.updateOne(
+    {
+        nombre: "UNSA"
+    },
+
+    {
+        $set:
+        {
+            alumnos: 6000
+        }
+    }
+)
+
+use('db1')
+db.universidades.updateMany(
+    {
+
+    },
+    {
+        $set:
+        {
+            estado: true
+        }
+    }
+)
+
+
+// operador unset
+
+use('db1')
+db.universidades.updateMany(
+    {
+
+    },
+    {
+        $unset:{
+            estado: ""
+        }
+    }
+)
+
+// $rename
+
+use('db1')
+db.universidades.updateMany(
+    {
+
+    },
+    {
+        $rename:
+        {
+            presupuesto: "presupuestoTotal"
+        }
+    }
+)
+use('db1')
+db.universidades.find();
