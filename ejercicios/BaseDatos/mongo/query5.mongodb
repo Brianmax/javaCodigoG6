@@ -1,0 +1,93 @@
+
+use("dbSchema")
+db.createCollection("usuarios", 
+    {
+        validator: {
+            $jsonSchema: {
+                bsonType: 'object',
+                required: ['nombre', 'apellido', 'password'],
+                properties: {
+                    nombre: {
+                        bsonType: 'string'
+                    },
+                    apellido: {
+                        bsonType: 'string'
+                    },
+                    password: {
+                        bsonType: 'string'
+                    },
+                    productos: {
+                        bsonType: 'array',
+                        items: {
+                            bsonType: 'object',
+                            properties: {
+                                nombre_producto: {
+                                    bsonType: 'string'
+                                },
+                                precio: {
+                                    bsonType: 'double'
+                                },
+                                descripcion: {
+                                    bsonType: 'string'
+                                }
+                            }
+                        }
+                    },
+                    direcciones: {
+                        bsonType: 'array',
+                        items: {
+                            bsonType: 'object',
+                            properties: {
+                                calle: {
+                                    bsonType: 'string'
+                                },
+                                distrito: {
+                                    bsonType: 'string'
+                                },
+                                departamento: {
+                                    bsonType: 'string'
+                                },
+                                ciudad: {
+                                    bsonType: 'string'
+                                }
+                            }
+                        }
+                   
+                    }
+                }
+            }
+        }
+    }
+)
+
+use('dbSchema')
+db.usuarios.insertOne(
+    {
+        nombre: "George",
+        apellido: "Maxi",
+        password: "1234",
+        productos: [
+            {
+                nombre_producto: "IPhone 14",
+                precio: 2999.9,
+                descripcion: "Muy buen telefono para los amantes de la tecnologia"
+            },
+            {
+                nombre_producto: "Impresora HP",
+                precio: 599.9,
+                descripcion: "Impresiones de muy buena calidad"
+            }
+        ],
+        direcciones: [
+            {
+                calle: "Av Ejercito",
+                distrito: "Cayma",
+                departamento: "17",
+                ciudad: "Arequipa"
+            }
+        ]
+    }
+)
+
+use('sample_training')
+db.companies.find();

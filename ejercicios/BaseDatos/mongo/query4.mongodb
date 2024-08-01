@@ -1,0 +1,43 @@
+use('sample_training')
+db.zips.find();
+
+// buscar los documentos que tengan
+// poblacion mayor a 100000
+
+
+
+use('sample_training')
+db.zips.find(
+    {
+        pop: {
+            $gt: 100000
+        }
+    }
+)
+
+
+
+// buscar los documentos que su
+// ubicacion este entre 80 y 150
+// para x
+// ubicacion entre 20 y 100 para y
+
+
+
+use('sample_training')
+db.zips.find(
+    {
+        $and: [
+            {
+                "loc.x": {
+                    $gte: 80,
+                    $lte: 150
+                },
+                "loc.y": {
+                    $gte: 20,
+                    $lte: 100
+                }
+            }
+        ]
+    }
+);

@@ -112,3 +112,18 @@ db.universidades.find(
 )
 
 // pull
+
+use('db1')
+db.universidades.updateMany(
+    {
+        alumnos: {
+            $gte: 7000
+        }
+    },
+    {
+        $pull:
+        {
+            carreras: "Ing Mecatronica"
+        }
+    }
+)
